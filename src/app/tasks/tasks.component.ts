@@ -18,14 +18,14 @@ export class TasksComponent {
       userId:'u1',
       title:'Master Angular',
       summary:'Learn all the basic and advanced features of Angular',
-      dudeDate:'2025-12-31'
+      dueDate:'2025-12-31'
     },
     {
       id:'t2',
       userId:'u2',
       title:'Master Angular',
       summary:'Learn all the basic and advanced features of Angular',
-      dudeDate:'2025-12-31'
+      dueDate:'2025-12-31'
     }
   ]
   

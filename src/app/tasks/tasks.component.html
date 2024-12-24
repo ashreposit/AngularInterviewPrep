@@ -8,7 +8,7 @@
     <ul>
         @for(task of selectedUserId; track task.id){
             <li>
-                <app-task></app-task>
+                <app-task [tasks]="task" />
             </li>
         }
     </ul>
