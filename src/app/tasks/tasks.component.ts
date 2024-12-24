@@ -8,7 +8,7 @@ import { TasksService } from './tasks.service';
   selector: 'app-tasks',
   imports: [TaskComponent,NewTaskComponent],
   templateUrl: './tasks.component.html',
-  styleUrl: './tasks.component.css'
+  styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
   
@@ -17,26 +17,18 @@ export class TasksComponent {
 
   onAddingTask:boolean = false;
 
-  private taskService = new TasksService();
+  constructor(private taskService: TasksService){}//injecting a service as a instance of TasksService
   
   get selectedUserTask(){
     return this.taskService.getUserTasks(this.userId);
-  }
-
-  onCompleteTask(id:string){
-    this.taskService.removeTask(id);
   }
 
   onStartAddTask(){
     this.onAddingTask = true;
   }
 
-  onCancelAddTask(){
+  onCloseAddTask(){
     this.onAddingTask = false;  
   }
 
-  onAddTask(taskData:NewTaskData){
-    this.taskService.addTask(taskData,this.userId);
-    this.onAddingTask = false;
-  }
 }
