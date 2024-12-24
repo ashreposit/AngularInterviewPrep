@@ -1,4 +1,4 @@
-import { Component, Input, Output,EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 
@@ -42,5 +42,9 @@ export class TasksComponent {
 
   onAddTask(){
     this.onAddingTask = true;
+  }
+
+  onCancelAddTask(){
+    this.onAddingTask = false;  
   }
 }
