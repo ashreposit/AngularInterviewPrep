@@ -1,4 +1,4 @@
-import { Component, Input,inject } from '@angular/core';
+import { Component, Input,OnInit,inject } from '@angular/core';
 import { Tasks } from './task.model';
 import { CardComponent } from '../../shared/card/card.component';
 import { DatePipe } from '@angular/common';
@@ -10,9 +10,13 @@ import { TasksService } from '../tasks.service';
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
-export class TaskComponent {
+export class TaskComponent implements OnInit {
   
   @Input({required:true}) tasks!:Tasks;
+
+  ngOnInit(): void {
+      console.log({INFO:this.tasks});
+  }
 
   private tasksService = inject(TasksService);
 

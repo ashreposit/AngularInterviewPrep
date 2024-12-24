@@ -20,6 +20,7 @@ export class TasksComponent {
   constructor(private taskService: TasksService){}//injecting a service as a instance of TasksService
   
   get selectedUserTask(){
+    console.log(this.userId);
     return this.taskService.getUserTasks(this.userId);
   }
 
