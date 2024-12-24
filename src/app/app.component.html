@@ -11,7 +11,7 @@
     </ul>
     
     @if(onSelectUser){
-        <app-task [name]="onSelectUser.name" />
+        <app-tasks [userId]="onSelectUser.id" [name]="onSelectUser.name" />
     } @else {
         <p id="fallback">Select a user to see their tasks!</p>
     }
