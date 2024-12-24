@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { NewTaskData } from './task/task.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -15,36 +17,26 @@ export class TasksComponent {
 
   onAddingTask:boolean = false;
 
-  tasks=[
-    {
-      id:'t1',
-      userId:'u1',
-      title:'Master Angular',
-      summary:'Learn all the basic and advanced features of Angular',
-      dueDate:'2025-12-31'
-    },
-    {
-      id:'t2',
-      userId:'u2',
-      title:'Master Angular',
-      summary:'Learn all the basic and advanced features of Angular',
-      dueDate:'2025-12-31'
-    }
-  ];
+  private taskService = new TasksService();
   
-  get selectedUserId(){
-    return this.tasks.filter((task)=> task.userId === this.userId);
+  get selectedUserTask(){
+    return this.taskService.getUserTasks(this.userId);
   }
 
   onCompleteTask(id:string){
-    this.tasks = this.tasks.filter((task)=> task.id !== id );
+    this.taskService.removeTask(id);
   }
 
-  onAddTask(){
+  onStartAddTask(){
     this.onAddingTask = true;
   }
 
   onCancelAddTask(){
     this.onAddingTask = false;  
+  }
+
+  onAddTask(taskData:NewTaskData){
+    this.taskService.addTask(taskData,this.userId);
+    this.onAddingTask = false;
   }
 }
